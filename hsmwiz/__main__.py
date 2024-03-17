@@ -38,8 +38,19 @@ from .ActionGenCSR import ActionGenCSR
 from .ActionPutCRT import ActionPutCRT
 from .FriendlyArgumentParser import baseint
 
+_extra_sopath = ":".join(
+	[segment for segment in [
+		environ.get("EXTRA_SO_PATH"),
+		"/usr/local/lib",
+		"/usr/lib",
+		"/usr/lib/x86_64-linux-gnu",
+		"/usr/lib/x86_64-linux-gnu/openssl-1.0.2/engines",
+		"/usr/lib/x86_64-linux-gnu/engines-1.1",
+	] if segment is not None]
+)
+
 _default = {
-	"sopath":	environ.get("SO_PATH", "/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/openssl-1.0.2/engines:/usr/lib/x86_64-linux-gnu/engines-1.1"),
+	"sopath":	environ.get("SO_PATH", _extra_sopath),
 }
 
 def main():
