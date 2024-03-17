@@ -21,6 +21,7 @@
 
 import sys
 import hsmwiz
+from os import environ
 from .MultiCommand import MultiCommand
 from .ActionIdentify import ActionIdentify
 from .ActionVerifyPIN import ActionVerifyPIN
@@ -38,7 +39,7 @@ from .ActionPutCRT import ActionPutCRT
 from .FriendlyArgumentParser import baseint
 
 _default = {
-	"sopath":	"/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/openssl-1.0.2/engines:/usr/lib/x86_64-linux-gnu/engines-1.1",
+	"sopath":	environ.get("SO_PATH", "/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/openssl-1.0.2/engines:/usr/lib/x86_64-linux-gnu/engines-1.1"),
 }
 
 def main():
